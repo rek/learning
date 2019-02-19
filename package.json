@@ -1,8 +1,14 @@
 {
-  "name": "l2",
+  "name": "learning",
   "version": "0.1.0",
-  "private": true,
+  "author": "Adam Tombleson <rekarnar@gmail.com>",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:rek/learning.git"
+  },
   "dependencies": {
+    "eslint-config-rek": "^1.0.1",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
     "react-scripts": "2.1.5"
@@ -14,7 +20,7 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "eslint-config-rek"
   },
   "browserslist": [
     ">0.2%",
