@@ -1,3 +1,0 @@
-React
-
-Learning patterns etc.
