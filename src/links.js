@@ -1,15 +1,14 @@
 import React from 'react'
+import './links.css'
 
 import { 
     Link,
   } from "react-router-dom";
 
 export default () => {
+    console.log('Links.')
     return (
         <ul>
-            <li>
-                <Link to="/">Home</Link>
-            </li>
             <li>
                <Link to="/01">1 - Controlled</Link>
             </li>
