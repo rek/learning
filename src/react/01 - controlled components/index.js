@@ -1,6 +1,5 @@
 import React from 'react'
 
-
 /**
 * PROS:
 * -
@@ -10,39 +9,71 @@ import React from 'react'
 *
 */
 class Controlled extends React.Component {
+	state = {
+		value: '',
+	}
+	
 	render() {
 		const {
+			value,
+		} = this.state
 
-		} = this.props
+		const Component = React.lazy(() => import('./controlled'))
 
 		return (
-			<div>
-				test
-			</div>
+			<React.Suspense fallback='Loading...'>
+				<Component
+					value={value}
+					handleChange={this.handleChange}
+				/>
+			</React.Suspense>
 		)
 	}
 }
 
 /**
 * PROS:
-* -
+* - Simple implementation, props are input and output only
 *
 * CONS:
-* -
+* - Internal component has lots of complexity
 *
 */
 class Uncontrolled extends React.Component {
-	render() {
-		const {
+	handleBlur = (value) => {
+		console.log('Final value:', value)
+	}
 
-		} = this.props
+	render() {
+		const Component = React.lazy(() => import('./uncontrolled'))
 
 		return (
-			<div>
-				test
-			</div>
+			<React.Suspense fallback='Loading...'>
+				<Component
+					value='INITIAL VALUE'
+					handleBlur={this.handleBlur}
+				/>
+			</React.Suspense>
 		)
 	}
 }
 
-export default Controlled
+// export each for testing
+export {
+	Controlled,
+	Uncontrolled,
+}
+
+
+export default () => {
+	return (
+		<React.Fragment>
+			<label>Controlled:</label>
+			<Controlled />
+
+			<label>Un-Controlled:</label>
+			<Uncontrolled />
+		</React.Fragment>
+	)
+}
+

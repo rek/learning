@@ -1,0 +1,9 @@
+a {
+    -text-decoration: none;
+    color: white;
+}
+
+li {
+   list-style: none;
+   counter-reset: my-awesome-counter;
+}
