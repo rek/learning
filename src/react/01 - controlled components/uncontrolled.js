@@ -34,14 +34,17 @@ class UnControlled extends React.Component {
         } = this.state
 
         return (
-            <input
-                className='awesome-input'
-                type={type}
-                value={value}
-                onChange={this.handleChange}
-                onBlur={this.handleBlur}
-                placeholder='uncontrolled'
-            />
+            <React.Fragment>
+                <label>Un-Controlled:</label>
+                <input
+                    className='awesome-input'
+                    type={type}
+                    value={value}
+                    onChange={this.handleChange}
+                    onBlur={this.handleBlur}
+                    placeholder='Name...'
+                />
+            </React.Fragment>
         )
     }
 }

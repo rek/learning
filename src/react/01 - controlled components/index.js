@@ -8,23 +8,33 @@ import React from 'react'
 * -
 *
 */
+const ControlledComponent = React.lazy(() => import('./controlled'))
 class Controlled extends React.Component {
 	state = {
 		value: '',
 	}
-	
+
+	handleChange = (event) => {
+		this.setState({
+			value: event.target.value,
+		})
+	}
+
+	handleBlur = () => {
+		console.log('Final value:', this.state.value)
+	}
+
 	render() {
 		const {
 			value,
 		} = this.state
 
-		const Component = React.lazy(() => import('./controlled'))
-
 		return (
 			<React.Suspense fallback='Loading...'>
-				<Component
+				<ControlledComponent
 					value={value}
 					handleChange={this.handleChange}
+					handleBlur={this.handleBlur}
 				/>
 			</React.Suspense>
 		)
@@ -39,18 +49,17 @@ class Controlled extends React.Component {
 * - Internal component has lots of complexity
 *
 */
+const UncontrolledComponent = React.lazy(() => import('./uncontrolled'))
 class Uncontrolled extends React.Component {
 	handleBlur = (value) => {
 		console.log('Final value:', value)
 	}
 
 	render() {
-		const Component = React.lazy(() => import('./uncontrolled'))
 
 		return (
 			<React.Suspense fallback='Loading...'>
-				<Component
-					value='INITIAL VALUE'
+				<UncontrolledComponent
 					handleBlur={this.handleBlur}
 				/>
 			</React.Suspense>
@@ -68,10 +77,7 @@ export {
 export default () => {
 	return (
 		<React.Fragment>
-			<label>Controlled:</label>
 			<Controlled />
-
-			<label>Un-Controlled:</label>
 			<Uncontrolled />
 		</React.Fragment>
 	)

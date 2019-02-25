@@ -2,28 +2,18 @@ import React from 'react'
 import {observer} from 'mobx-react'
 import {types} from 'mobx-state-tree'
 
-const Robot = types.model('RobotModel', {
-	name: '',
-	kills: 0,
-	model: '',
-})
+import SearchComponent from './search'
 
+const SearchModel = types.model('SearchModel', {
+	value: '',
+})
 	.actions((self) => {
 		return {
-			addKill() {
-				self.kills++
+			updateSearch(event) {
+				self.value = event.target ? event.target.value : event
 			},
 		}
 	})
-
-	.views((self) => {
-		return {
-			get display() {
-				return `${self.name} (${self.kills})`
-			}
-		}
-	})
-
 
 class StateManagement extends React.Component {
 	constructor(props) {
@@ -34,15 +24,23 @@ class StateManagement extends React.Component {
 		}
 	}
 
+	search = SearchModel.create({
+		value: '',
+	})
+
+	handleSearch = () => {
+		console.log('Doing search:', this.search.value)
+	}
+
 	render() {
-		const {
-
-		} = this.props
-
 		return (
-			<div>
-				test
-			</div>
+			<SearchComponent
+				label='Search'
+				placeholder='Name...'
+				value={this.search.value}
+				handleChange={this.search.updateSearch}
+				handleSearch={this.handleSearch}
+			/>
 		)
 	}
 }
