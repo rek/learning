@@ -1,11 +1,19 @@
-import React from 'react'
+import React, {useState} from 'react'
+
+import SearchComponent from '../01 - controlled components/controlled'
 
 export default ({
-
+	handleSearch,
 }) => {
+	const [search, updateSearch] = useState('')
+
 	return (
-		<div>
-			test
-		</div>
+		<SearchComponent
+			label='Search (Hooks)'
+			placeholder='Name...'
+			value={search}
+			handleChange={updateSearch}
+			handleBlur={handleSearch}
+		/>
 	)
 }

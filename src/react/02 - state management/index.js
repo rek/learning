@@ -2,44 +2,38 @@ import React from 'react'
 import {observer} from 'mobx-react'
 import {types} from 'mobx-state-tree'
 
-import SearchComponent from './search'
+import SearchComponent from '../01 - controlled components/controlled'
 
+// define store
 const SearchModel = types.model('SearchModel', {
 	value: '',
 })
 	.actions((self) => {
 		return {
-			updateSearch(event) {
-				self.value = event.target ? event.target.value : event
+			updateSearch(value) {
+				self.value = value
 			},
 		}
 	})
 
+// create store instance
+const search = SearchModel.create({
+	value: '',
+})
+
 class StateManagement extends React.Component {
-	constructor(props) {
-		super(props)
-
-		this.state = {
-			loading: true
-		}
-	}
-
-	search = SearchModel.create({
-		value: '',
-	})
-
 	handleSearch = () => {
-		console.log('Doing search:', this.search.value)
+		console.log('Doing search:', search.value)
 	}
 
 	render() {
 		return (
 			<SearchComponent
-				label='Search'
+				label='Search (MobX)'
 				placeholder='Name...'
-				value={this.search.value}
-				handleChange={this.search.updateSearch}
-				handleSearch={this.handleSearch}
+				value={search.value}
+				handleChange={search.updateSearch}
+				handleBlur={this.handleSearch}
 			/>
 		)
 	}
