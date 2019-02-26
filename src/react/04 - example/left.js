@@ -1,20 +1,38 @@
-import React from 'react'
+// import React from 'react'
 
-export default ({
-	items = [],
-}) => {
+// export default ({
+// 	items = [],
+// 	handleClick,
+// }) => {
+// 	return (
+// 		<ul className='left'>
+// 			{items.map((item) => {
+// 				return (
+// 					<li
+// 						key={item.id}
+// 						onClick={handleClick(item)}
+// 					>
+// 						{item.name}
+// 					</li>
+// 				)
+// 			})}
+// 		</ul>
+// 	)
+// }
+
+import React, {useContext} from 'react'
+import List from './common/list'
+
+import storeContext from './data/store'
+
+export default () => {
+	const store = useContext(storeContext)
+
 	return (
-		<ul className='left'>
-			{items.map((item) => {
-				return (
-					<li
-						key={item.id}
-						onClick={item.clicked}
-					>
-						{item.name}
-					</li>
-				)
-			})}
-		</ul>
+		<List
+			className='left'
+			items={store.currentChildren}
+			networkStatus={store.networkState}
+		/>
 	)
 }

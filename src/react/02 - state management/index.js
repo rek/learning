@@ -5,7 +5,7 @@ import {types} from 'mobx-state-tree'
 import SearchComponent from '../01 - controlled components/controlled'
 
 // define store
-const SearchModel = types.model('SearchModel', {
+const SearchModel = types.model({
 	value: '',
 })
 	.actions((self) => {

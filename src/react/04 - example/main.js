@@ -1,20 +1,15 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import List from './common/list'
 
-export default ({
-	items = [],
-}) => {
+import storeContext from './data/store'
+
+export default () => {
+	const store = useContext(storeContext)
+
 	return (
-		<ul className='main'>
-			{items.map((item) => {
-				return (
-					<li
-						key={item.id}
-						onClick={item.clicked}
-					>
-						{item.name}
-					</li>
-				)
-			})}
-		</ul>
+		<List
+			className='main'
+			items={store.currentContent}
+		/>
 	)
 }

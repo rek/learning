@@ -15,6 +15,8 @@ hr {
 	justify-content: center;
 	font-size: calc(10px + 2vmin);
 	color: white;
+	padding-left: 4px;
+    padding-bottom: 4px;
 }
 
 .app-content {
@@ -28,8 +30,17 @@ hr {
 	color: white;
 }
 
-a:visited {
-	color: white;
+.app-content a {
+	color: #ccc;
+
+}
+
+.app-header a {
+	align-self: flex-start;
+}
+
+.app-header a:visited {
+	color: #444;
 }
 
 button{
@@ -105,6 +116,7 @@ ul.main {
 ul.main li {
     background-color: #3C8;
     margin: 0 8px 0 0;
+    cursor: pointer;
     margin-bottom: 8px;
     cursor: pointer;
     display: inline-block;
@@ -133,6 +145,7 @@ ul.top {
 ul.top li {
     display: inline-block;
     list-style: none;
+    cursor: pointer;
     padding: 9px 0 25px 0;
     background: #FC8;
     margin-left: 10px;

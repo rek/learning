@@ -1,13 +1,16 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import List from './common/list'
 
-export default ({
-	items = [],
-}) => {
+import storeContext from './data/store'
+
+export default () => {
+	const store = useContext(storeContext)
+
 	return (
 		<List
 			className='top'
-			items={items}
+			items={store.tabs}
+			networkStatus={store.networkState}
 		/>
 	)
 }
