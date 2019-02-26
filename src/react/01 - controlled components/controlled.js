@@ -11,20 +11,21 @@ const Controlled = ({
 	label = 'Controlled:',
 	type = 'text',
 	placeholder = 'Name...',
+	className = 'awesome-input',
 }) => {
 	return (
-        <React.Fragment>
+        <div className={className}>
 	        <label>{label}</label>
 
 			<input
-				className='awesome-input'
 				type={type}
 				value={value}
-				onChange={returnValue(handleChange)}
-				onBlur={handleBlur}
 				placeholder={placeholder}
+
+				onBlur={handleBlur}
+				onChange={returnValue(handleChange)}
 			/>
-        </React.Fragment>
+        </div>
 	)
 }
 
