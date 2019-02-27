@@ -1,25 +1,30 @@
 
 const data1 = {
 	id: 'robots',
-	name: 'Robots'
+	name: 'Robots',
+	type: 'tab',
 }
 
 const data2 = {
 	id: 'planets',
 	name: 'Planets',
+	type: 'tab',
 }
 
 const planets = [{
 	id: '1',
 	name: 'Mercury',
+	type: 'planet',
 	children: [],
 }, {
 	id: '2',
 	name: 'Venus',
+	type: 'planet',
 	children: [],
 }, {
 	id: '3',
 	name: 'Earth',
+	type: 'planet',
 	children: [{
 		id: 'p-3-1',
 		name: 'Luna',
@@ -27,6 +32,7 @@ const planets = [{
 }, {
 	id: '4',
 	name: 'Mars',
+	type: 'planet',
 	children: [{
 		id: 'p-4-1',
 		name: 'deimos',
@@ -37,6 +43,7 @@ const planets = [{
 }, {
 	id: '5',
 	name: 'Jupiter',
+	type: 'planet',
 	children: [{
 		id: 'p-5-1',
 		name: 'Ganymede',
@@ -53,6 +60,7 @@ const planets = [{
 }, {
 	id: '6',
 	name: 'Saturn',
+	type: 'planet',
 	children: [{
 		id: 'p-6-1',
 		name: 'Titian',

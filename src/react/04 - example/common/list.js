@@ -3,11 +3,9 @@ import {observer} from 'mobx-react-lite'
 
 export default observer(({
 	items = [],
-	networkStatus = '',
+	isLoaded = false,
 	className,
 }) => {
-	console.log('networkStatus', networkStatus)
-	console.log('items.length', items.length)
     return (
         <ul className={className}>
 	        {/*
@@ -16,9 +14,9 @@ export default observer(({
 				before we show the empty field
 	        */}
 			{items.length === 0 &&
-				(networkStatus === 'pending'
-					? <li>Loading...</li>
-					: <li>None</li>
+				(isLoaded
+					? <li>None</li>
+					: <li>Loading...</li>
 				)
 			}
 
@@ -27,6 +25,7 @@ export default observer(({
 	    	        <li
 		    	        key={item.id}
 	    	        	onClick={item.clicked}
+	    	        	className={item.selected ? 'on' : ''}
     	        	>
 	    	        	{item.name}
 	    	        </li>

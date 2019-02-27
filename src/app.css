@@ -154,3 +154,7 @@ ul.top li {
     margin-top: 8px;
     color: black;
 }
+
+li.on {
+    color: #f00 !important;
+}

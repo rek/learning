@@ -23,16 +23,14 @@
 import React, {useContext} from 'react'
 import List from './common/list'
 
-import storeContext from './data/store'
-
-export default () => {
-	const store = useContext(storeContext)
-
+export default ({
+	store,
+}) => {
 	return (
 		<List
 			className='left'
-			items={store.currentChildren}
-			networkStatus={store.networkState}
+			items={store.all}
+			isLoaded
 		/>
 	)
 }

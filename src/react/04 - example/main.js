@@ -1,9 +1,11 @@
 import React, {useContext} from 'react'
 import List from './common/list'
 
-import storeContext from './data/store'
+// import storeContext from './data/store'
 
-export default () => {
+export default ({
+	storeContext
+}) => {
 	const store = useContext(storeContext)
 
 	return (

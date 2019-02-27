@@ -1,16 +1,16 @@
 import React, {useContext} from 'react'
 import List from './common/list'
+import {observer} from 'mobx-react-lite'
 
-import storeContext from './data/store'
-
-export default () => {
-	const store = useContext(storeContext)
+export default observer(({
+	store,
+}) => {
 
 	return (
 		<List
 			className='top'
-			items={store.tabs}
-			networkStatus={store.networkState}
+			items={store.all}
+			isLoaded={store.isLoaded}
 		/>
 	)
-}
+})
