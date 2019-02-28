@@ -1,12 +1,12 @@
 
-const tab = [{
+const category = [{
 	id: 'robot',
 	name: 'Robots',
-	type: 'tab',
+	type: 'category',
 }, {
 	id: 'planet',
 	name: 'Planets',
-	type: 'tab',
+	type: 'category',
 }]
 
 const planet = [{
@@ -69,7 +69,7 @@ const planet = [{
 }]
 
 const robot = [{
-	id: '1',
+	id: 'r-1',
 	name: 'Scythe',
 	type: 'robot',
 	children: [{
@@ -77,8 +77,8 @@ const robot = [{
 		name: 'Obuqtron',
 	}],
 }, {
-	id: '2',
-	name: 'Cylinder',
+	id: 'r-2',
+	name: 'Not robots',
 	type: 'robot',
 	children: [{
 		id: 'c-2-1',
@@ -89,20 +89,25 @@ const robot = [{
 	}, {
 		id: 'c-2-3',
 		name: 'Bill',
-	}, {
-		id: 'c-2-4',
+	}],
+}, {
+	id: 'r-3',
+	name: 'Cylinder',
+	type: 'robot',
+	children: [{
+		id: 'c-3-1',
 		name: 'Tinker',
 	}, {
-		id: 'c-2-5',
+		id: 'c-3-1',
 		name: 'Tachikomas',
 	}, {
-		id: 'c-2-6',
+		id: 'c-3-1',
 		name: 'Awesom-O',
 	}],
 }]
 
 export {
-	tab,
+	category,
 	planet,
 	robot,
 }

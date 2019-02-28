@@ -2,21 +2,20 @@ import {
 	types,
 } from 'mobx-state-tree'
 
-import {tabs} from './storeTabs'
+import {generateTabsStore} from './storeTabs'
 import {networkState} from './storeNetwork'
+import {main} from './storeMain'
 
 const ui = types.model({
 	top: types.compose(types.model({
 		target: 'left',
-	}), tabs, networkState),
+	}), generateTabsStore(), networkState),
 
 	left: types.compose(types.model({
 		target: 'main',
-	}), tabs, networkState),
+	}), generateTabsStore(), networkState),
 
-	main: types.compose(types.model({
-		something: '',
-	}), tabs, networkState),
+	main,
 })
 
 export {

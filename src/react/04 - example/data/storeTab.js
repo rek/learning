@@ -3,9 +3,7 @@ import {
 	getParent,
 } from 'mobx-state-tree'
 
-import {
-	dataItem,
-} from './storeItem'
+import {dataItem} from './storeItem'
 
 /**
 * Tab - This is ONE item in a list. eg: 'robots'
@@ -20,7 +18,7 @@ const tab = types.model({
 	.actions((self) => {
 		return {
 			clicked() {
-				getParent(self, 2).changeSelection(self)
+				getParent(self, 2).handleClick(self)
 			},
 
 			select(state = true) {

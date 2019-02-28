@@ -11,7 +11,7 @@ const dataItem = types.model({
 	id: types.identifier,
 	name: '',
 	type: '',
-	// children: types.array(childItem),
+	children: types.optional(types.array(childItem), []),
 })
 
 export {

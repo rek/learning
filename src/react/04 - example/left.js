@@ -20,18 +20,20 @@
 // 	)
 // }
 
-import React from 'react'
-import List from './common/list'
+import React, {useContext} from 'react'
 import {observer} from 'mobx-react-lite'
 
-export default observer(({
-	store,
-}) => {
+import List from './common/list'
+import storeContext from './data/store'
+
+export default observer(() => {
+	const rootStore = useContext(storeContext)
+
 	return (
 		<List
-			className='left'
-			items={store.all}
-			loading={store.isLoading}
+			className={'left'}
+			items={rootStore.ui.left.all}
+			loading={rootStore.ui.left.isLoading}
 		/>
 	)
 })

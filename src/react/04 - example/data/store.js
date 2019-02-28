@@ -36,13 +36,20 @@ const store = types.model({
 					currentStore.reset()
 
 					currentStore.networkStarted()
-					const fetching = yield import('./data')
-					const fetchedData = fetching[type]
-					// console.log('Fake fetched data:', fetchedData)
 
-					// put our new data in the store
-					// note: this is pretty contrived, just a quick example
-					self.data = self.data.concat(fetchedData)
+					let fetchedData
+
+					if (currentStore.getCustomData) {
+						fetchedData = currentStore.getCustomData(self, type)
+					} else {
+						const fetching = yield import('./data')
+						fetchedData = fetching[type]
+						// console.log('Fake fetched data:', fetchedData)
+
+						// put our new data in the store
+						// note: this is pretty contrived, just a quick example
+						self.data = self.data.concat(fetchedData)
+					}
 
 					// this simulates some ajax
 					data = yield new Promise((resolve) => {
@@ -61,27 +68,19 @@ const store = types.model({
 
 	.views((self) => {
 		return {
-			get allData() {
-				return self.data.map((item) => item.id)
-			},
-
 			filterData(type) {
 				return self.data.filter((item) => item.type === type)
 			},
 
-			get currentChildren() {
-				if (self.currentTab) {
-
-				}
-
-				return []
+			getById(id) {
+				return self.data.find((item) => item.id === id)
 			},
 		}
 	})
 
 export default createContext(store.create({
 	// defaults:
-
+	// (can avoid this by better type setups)
 	ui: {
 		top: {
 			models: []
