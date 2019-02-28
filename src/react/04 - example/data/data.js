@@ -1,17 +1,15 @@
 
-const data1 = {
-	id: 'robots',
+const tab = [{
+	id: 'robot',
 	name: 'Robots',
 	type: 'tab',
-}
-
-const data2 = {
-	id: 'planets',
+}, {
+	id: 'planet',
 	name: 'Planets',
 	type: 'tab',
-}
+}]
 
-const planets = [{
+const planet = [{
 	id: '1',
 	name: 'Mercury',
 	type: 'planet',
@@ -70,9 +68,10 @@ const planets = [{
 	}]
 }]
 
-const robots = [{
+const robot = [{
 	id: '1',
 	name: 'Scythe',
+	type: 'robot',
 	children: [{
 		id: 'c-1-1',
 		name: 'Obuqtron',
@@ -80,6 +79,7 @@ const robots = [{
 }, {
 	id: '2',
 	name: 'Cylinder',
+	type: 'robot',
 	children: [{
 		id: 'c-2-1',
 		name: 'James',
@@ -102,9 +102,7 @@ const robots = [{
 }]
 
 export {
-	data1,
-	data2,
-
-	planets,
-	robots,
+	tab,
+	planet,
+	robot,
 }

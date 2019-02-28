@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "eslint-config-rek": "^1.0.1",
+    "eslint-plugin-react-hooks": "^1.3.0",
     "mobx": "^5.9.0",
     "mobx-react": "^5.4.3",
     "mobx-react-lite": "^1.1.0",

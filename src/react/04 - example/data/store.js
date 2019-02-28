@@ -4,49 +4,58 @@ import {
 	flow,
 } from 'mobx-state-tree'
 
-import {
-	ui,
-	tabs,
-} from './storeUI'
-
-import {
-	dataItem,
-} from './storeItem'
-
-// console.log('tabs', tabs)
-
-const networkState = types.optional(types.enumeration(['pending', 'done']), 'pending')
-
+import {ui} from './storeUI'
+import {dataItem} from './storeItem'
 
 // main ROOT store
 const store = types.model({
 	// raw datas
 	data: types.array(dataItem),
-	dataNetworkState: networkState,
 
 	// ui store!
+	// this guy duplicates data from our main store when needed
 	ui,
 })
 	.actions((self) => {
 		return {
-			doNetworkCall: flow(function*(fakeData, type) {
-				// put our new data in the store
-				self[type] = self[type].concat(fakeData)
+			/**
+			* Load data
+			*
+			* eg:
+			* 	store: "left"
+			* 	type: "planet"
+			*/
+			loadDataFor: flow(function*(store, type) {
+				let data = self.filterData(type)
 
-				// this simulates some ajax
-				return new Promise((resolve, reject) => {
-					setTimeout(() => {
-						self.networkState = 'done'
-						resolve(fakeData)
-					}, 1000)
-				})
+				let currentStore = self.ui[store]
+
+				if (data.length === 0) {
+					// if there are existing models in the display
+					// clear them out
+					currentStore.reset()
+
+					currentStore.networkStarted()
+					const fetching = yield import('./data')
+					const fetchedData = fetching[type]
+					// console.log('Fake fetched data:', fetchedData)
+
+					// put our new data in the store
+					// note: this is pretty contrived, just a quick example
+					self.data = self.data.concat(fetchedData)
+
+					// this simulates some ajax
+					data = yield new Promise((resolve) => {
+						setTimeout(() => {
+							resolve(fetchedData)
+						}, 1000)
+					})
+
+					currentStore.networkEnded()
+				}
+
+				currentStore.setup(data)
 			}),
-
-			loadDataFor(type) {
-				const planetData = self.filterData(type)
-				console.log('planetData', planetData)
-				self.ui.left.setup(planetData)
-			},
 		}
 	})
 
@@ -74,10 +83,13 @@ export default createContext(store.create({
 	// defaults:
 
 	ui: {
-		tabs: {
+		top: {
 			models: []
 		},
 		left: {
+			models: []
+		},
+		main: {
 			models: []
 		}
 	}
