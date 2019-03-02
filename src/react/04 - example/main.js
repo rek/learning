@@ -17,9 +17,9 @@ export default observer(() => {
 				before we show the empty field
 			*/}
 			{store.all.length === 0 &&
-				(store.loading
+				(store.isLoading
 					? <li>Loading...</li>
-					: <li>None</li>
+					: ''
 				)
 			}
 

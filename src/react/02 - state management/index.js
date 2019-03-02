@@ -6,7 +6,9 @@ import SearchComponent from '../01 - controlled components/controlled'
 
 // define store
 const SearchModel = types.model({
-	value: '',
+	value: '', // shortcut
+	// value: types.string,
+	// value: types.optional(types.string, 'DEFAULT'),
 })
 	.actions((self) => {
 		return {

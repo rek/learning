@@ -37,9 +37,9 @@ const mainTab = types.model({
 	})
 
 const main = types.compose(
-	types.model({
-		something_else: '',
-	}),
+	// types.model({
+	// 	something_else: '',
+	// }),
 	generateTabsStore(mainTab),
 	networkState,
 )
