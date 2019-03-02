@@ -8,22 +8,20 @@ import React from 'react'
 * - Internal component has lots of complexity
 *
 */
-const UncontrolledComponent = React.lazy(() => import('./uncontrolled'))
-class Uncontrolled extends React.Component {
-	handleBlur = (value) => {
+const Uncontrolled = () => {
+	const handleBlur = (value) => {
 		console.log('Final value:', value)
 	}
 
-	render() {
+	const UncontrolledComponent = React.lazy(() => import('./uncontrolled'))
 
-		return (
-			<React.Suspense fallback='Loading...'>
-				<UncontrolledComponent
-					handleBlur={this.handleBlur}
-				/>
-			</React.Suspense>
-		)
-	}
+	return (
+		<React.Suspense fallback='Loading...'>
+			<UncontrolledComponent
+				handleBlur={handleBlur}
+			/>
+		</React.Suspense>
+	)
 }
 
 

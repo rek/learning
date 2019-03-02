@@ -42,6 +42,7 @@ const store = types.model({
 					if (currentStore.getCustomData) {
 						fetchedData = currentStore.getCustomData(self, type)
 					} else {
+						console.log('Starting to fetch data for:', store, type)
 						const fetching = yield import('./data')
 						fetchedData = fetching[type]
 						// console.log('Fake fetched data:', fetchedData)

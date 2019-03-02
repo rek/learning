@@ -4,11 +4,11 @@ import {Provider} from 'mobx-react'
 const robots = {}
 
 export default () => {
-    return (
-        <Provider store={robots}>
-            <div>
-                nice
-            </div>
-        </Provider>
-    )
+	return (
+		<Provider store={robots}>
+			<div>
+				coming soon...
+			</div>
+		</Provider>
+	)
 }

@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useContext, useState} from 'react'
 import {observer} from 'mobx-react-lite'
 
 import storeContext from './data/store'
@@ -10,7 +10,7 @@ export default observer(() => {
 	const store = rootStore.ui[componentName]
 
 	return (
-		<ul className={'main'}>
+		<ul className='main'>
 			{/*
 				if there are no models
 				make sure we are not loading,
@@ -25,6 +25,7 @@ export default observer(() => {
 
 			{store.all.map((item) => {
 				return (
+					// <CustomLi item={item} key={item.id} />
 					<li
 						key={item.id}
 						onClick={item.clicked}
@@ -37,3 +38,25 @@ export default observer(() => {
 		</ul>
 	)
 })
+
+const CustomLi = ({item}) => {
+	const [clicks, setClick] = useState(0)
+
+	const handleClick = () => {
+		setClick(clicks + 1)
+
+		if (clicks === 2) {
+			item.clicked()
+			setClick(0)
+		}
+	}
+
+	return (
+		<li
+			onClick={handleClick}
+			className={item.selected ? 'on' : ''}
+		>
+			{item.displayName}
+		</li>
+	)
+}

@@ -1,5 +1,6 @@
 import {
 	types,
+	getParentOfType,
 } from 'mobx-state-tree'
 
 import {generateTabsStore} from './storeTabs'
@@ -17,6 +18,10 @@ const mainTab = types.model({
 		return {
 			clicked() {
 				self.clicks++
+
+				if (self.clicks === 5) {
+					getParentOfType(self, main).delete(self)
+				}
 			},
 		}
 	})

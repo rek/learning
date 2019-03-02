@@ -4,6 +4,7 @@ import {
 import {
 	types,
 	getParent,
+	destroy,
 } from 'mobx-state-tree'
 
 import {tab} from './storeTab'
@@ -51,6 +52,11 @@ const generateTabsStore = (
 
 				reset() {
 					return self.models = []
+				},
+
+				delete(model) {
+					console.log('Deleting:', model.name)
+					destroy(model)
 				},
 
 			}

@@ -14,8 +14,8 @@ const Controlled = ({
 	className = 'awesome-input',
 }) => {
 	return (
-        <div className={className}>
-	        <label>{label}</label>
+		<div className={className}>
+			<label>{label}</label>
 
 			<input
 				type={type}
@@ -25,7 +25,7 @@ const Controlled = ({
 				onBlur={handleBlur}
 				onChange={returnValue(handleChange)}
 			/>
-        </div>
+		</div>
 	)
 }
 
