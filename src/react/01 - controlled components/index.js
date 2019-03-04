@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 /**
  * PROS:
@@ -8,33 +8,39 @@ import React from 'react';
  * - Internal component has lots of complexity
  *
  */
-const UncontrolledComponent = React.lazy(() => import('./uncontrolled'));
+const UncontrolledComponent = React.lazy(() => import('./uncontrolled'))
 class Uncontrolled extends React.Component {
 	handleBlur = (value) => {
-		console.log('Final value:', value);
-	};
+		console.log('Final value:', value)
+	}
 
 	render() {
 		return (
 			<React.Suspense fallback='Loading...'>
 				<UncontrolledComponent handleBlur={this.handleBlur} />
 			</React.Suspense>
-		);
+		)
 	}
 }
 
-const FullyUncontrolledComponent = React.lazy(() => import('./fullyuncontrolled'));
+const FullyUncontrolledComponent = React.lazy(() =>
+	import('./fullyuncontrolled'),
+)
 class FullyUncontrolled extends React.Component {
 	handleBlur = (value) => {
-		console.log('Final value:', value);
-	};
+		console.log('Final value:', value)
+	}
 
 	render() {
 		return (
-			<React.Suspense fallback='Loading...'>
-				<FullyUncontrolledComponent handleBlur={this.handleBlur} />
+			<React.Suspense
+				fallback='Loading...'
+			>
+				<FullyUncontrolledComponent
+					handleBlur={this.handleBlur}
+				/>
 			</React.Suspense>
-		);
+		)
 	}
 }
 
@@ -48,30 +54,36 @@ class FullyUncontrolled extends React.Component {
  * -
  *
  */
-const ControlledComponent = React.lazy(() => import('./controlled'));
+const ControlledComponent = React.lazy(() => import('./controlled'))
 class Controlled extends React.Component {
 	state = {
 		value: '',
-	};
+	}
 
 	handleChange = (value) => {
 		this.setState({
 			value,
-		});
-	};
+		})
+	}
 
 	handleSearch = () => {
-		console.log('Doing search:', this.state.value);
-	};
+		console.log('Doing search:', this.state.value)
+	}
 
 	render() {
-		const {value} = this.state;
+		const {value} = this.state
 
 		return (
-			<React.Suspense fallback='Loading...'>
-				<ControlledComponent value={value} handleChange={this.handleChange} handleBlur={this.handleSearch} />
+			<React.Suspense
+				fallback='Loading...'
+			>
+				<ControlledComponent
+					value={value}
+					handleChange={this.handleChange}
+					handleBlur={this.handleSearch}
+				/>
 			</React.Suspense>
-		);
+		)
 	}
 }
 
@@ -93,8 +105,8 @@ export default () => {
 			<Uncontrolled />
 			<Controlled />
 		</React.Fragment>
-	);
-};
+	)
+}
 
 // export each for testing
-export {Controlled, Uncontrolled, FullyUncontrolled};
+export {Controlled, Uncontrolled, FullyUncontrolled}

@@ -1,8 +1,8 @@
 import React from 'react';
 import {observer} from 'mobx-react';
-import {types} from 'mobx-state-tree';
+import {types} from 'mobx-state-tree'
 
-import SearchComponent from '../01 - controlled components/controlled';
+import SearchComponent from '../01 - controlled components/controlled'
 
 // define store
 const SearchModel = types
@@ -14,22 +14,29 @@ const SearchModel = types
 			updateSearch(value) {
 				self.value = value;
 			},
-		};
-	});
+		}
+	})
 
 // create store instance
 const search = SearchModel.create({
 	// value: '',
-});
+})
 
 class StateManagement extends React.Component {
 	handleSearch = () => {
-		console.log('Doing search:', search.value);
-	};
+		console.log('Doing search:', search.value)
+	}
 
 	render() {
-		return <SearchComponent label='Search (MobX)' placeholder='Name...' value={search.value} handleChange={search.updateSearch} handleBlur={this.handleSearch} />;
+		return (
+			<SearchComponent
+				label='Search (MobX)'
+				placeholder='Name...'
+				value={search.value}
+				handleChange={search.updateSearch}
+				handleBlur={this.handleSearch}
+			/>)
 	}
 }
 
-export default observer(StateManagement);
+export default observer(StateManagement)

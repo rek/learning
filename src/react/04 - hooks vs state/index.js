@@ -3,12 +3,10 @@ import {Provider} from 'mobx-react'
 
 const robots = {}
 
-export default () => {
-    return (
-        <Provider store={robots}>
-            <div>
-                nice
-            </div>
-        </Provider>
-    )
-}
+export default () => (
+	<Provider store={robots}>
+		<div>
+            nice
+		</div>
+	</Provider>
+);

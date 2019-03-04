@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-const returnValue = (handleChange) => (event) => handleChange(event.target.value);
+const returnValue = (handleChange) => (event) => handleChange(event.target.value)
 
 const Controlled = ({
 	value,
@@ -14,13 +14,21 @@ const Controlled = ({
 	className = 'awesome-input',
 }) => {
 	return (
-		<div className={className}>
+		<div
+			className={className}
+		>
 			<label>{label}</label>
 
-			<input type={type} value={value} placeholder={placeholder} onBlur={handleBlur} onChange={returnValue(handleChange)} />
+			<input
+				type={type}
+				value={value}
+				placeholder={placeholder}
+				onBlur={handleBlur}
+				onChange={returnValue(handleChange)}
+			/>
 		</div>
-	);
-};
+	)
+}
 
 Controlled.propTypes = {
 	value: PropTypes.string.isRequired,
@@ -30,6 +38,6 @@ Controlled.propTypes = {
 	label: PropTypes.string,
 	type: PropTypes.string,
 	placeholder: PropTypes.string,
-};
+}
 
-export default Controlled;
+export default Controlled

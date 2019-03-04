@@ -1,22 +1,22 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
 class FullyUnControlled extends React.Component {
 	static propTypes = {
 		handleBlur: PropTypes.func.isRequired,
 		type: PropTypes.string,
-	};
+	}
 
 	static defaultProps = {
 		type: 'text',
-	};
+	}
 
 	handleBlur = () => {
-		this.props.handleBlur(this.input.value);
-	};
+		this.props.handleBlur(this.input.value)
+	}
 
 	render() {
-		const {type} = this.props;
+		const {type} = this.props
 
 		return (
 			<React.Fragment>
@@ -27,12 +27,12 @@ class FullyUnControlled extends React.Component {
 					onBlur={this.handleBlur}
 					placeholder='Name...'
 					ref={(el) => {
-						this.input = el;
+						this.input = el
 					}}
 				/>
 			</React.Fragment>
-		);
+		)
 	}
 }
 
-export default FullyUnControlled;
+export default FullyUnControlled
