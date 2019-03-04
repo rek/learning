@@ -16,8 +16,12 @@ class Uncontrolled extends React.Component {
 
 	render() {
 		return (
-			<React.Suspense fallback='Loading...'>
-				<UncontrolledComponent handleBlur={this.handleBlur} />
+			<React.Suspense
+				fallback='Loading...'
+			>
+				<UncontrolledComponent
+					handleBlur={this.handleBlur}
+				/>
 			</React.Suspense>
 		)
 	}
