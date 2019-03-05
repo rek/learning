@@ -11,7 +11,9 @@ export default observer(({
 	// console.log('className:', className)
 
 	return (
-		<ul className={className}>
+		<ul
+			className={className}
+		>
 			{/*
 				if there are no models
 				make sure we are not loading,

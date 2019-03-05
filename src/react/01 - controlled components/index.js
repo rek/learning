@@ -1,13 +1,13 @@
 import React from 'react'
 
 /**
-* PROS:
-* - Simple implementation, props are input and output only
-*
-* CONS:
-* - Internal component has lots of complexity
-*
-*/
+ * PROS:
+ * - Simple implementation, props are input and output only
+ *
+ * CONS:
+ * - Internal component has lots of complexity
+ *
+ */
 const UncontrolledComponent = React.lazy(() => import('./uncontrolled'))
 class Uncontrolled extends React.Component {
 	handleBlur = (value) => {
@@ -15,9 +15,10 @@ class Uncontrolled extends React.Component {
 	}
 
 	render() {
-
 		return (
-			<React.Suspense fallback='Loading...'>
+			<React.Suspense
+				fallback='Loading...'
+			>
 				<UncontrolledComponent
 					handleBlur={this.handleBlur}
 				/>
@@ -26,60 +27,37 @@ class Uncontrolled extends React.Component {
 	}
 }
 
+const FullyUncontrolledComponent = React.lazy(() =>
+	import('./fullyuncontrolled'),
+)
+class FullyUncontrolled extends React.Component {
+	handleBlur = (value) => {
+		console.log('Final value:', value)
+	}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	render() {
+		return (
+			<React.Suspense
+				fallback='Loading...'
+			>
+				<FullyUncontrolledComponent
+					handleBlur={this.handleBlur}
+				/>
+			</React.Suspense>
+		)
+	}
+}
 
 /**
-* PROS:
-* - Recommended by react team (generally)
-* - Child component is presentational
-* - More reusable
-*
-* CONS:
-* -
-*
-*/
+ * PROS:
+ * - Recommended by react team (generally)
+ * - Child component is presentational
+ * - More reusable
+ *
+ * CONS:
+ * -
+ *
+ */
 const ControlledComponent = React.lazy(() => import('./controlled'))
 class Controlled extends React.Component {
 	state = {
@@ -97,12 +75,12 @@ class Controlled extends React.Component {
 	}
 
 	render() {
-		const {
-			value,
-		} = this.state
+		const {value} = this.state
 
 		return (
-			<React.Suspense fallback='Loading...'>
+			<React.Suspense
+				fallback='Loading...'
+			>
 				<ControlledComponent
 					value={value}
 					handleChange={this.handleChange}
@@ -113,148 +91,26 @@ class Controlled extends React.Component {
 	}
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /**
-* Type 3: Controllable - NOT dealing with here
-*
-* PROS:
-* - Most of best of both
-*
-* CONS:
-* - More complex
-*
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ * Type 3: Controllable - NOT dealing with here
+ *
+ * PROS:
+ * - Most of best of both
+ *
+ * CONS:
+ * - More complex
+ *
+ */
 
 export default () => {
 	return (
 		<React.Fragment>
+			<FullyUncontrolled />
 			<Uncontrolled />
 			<Controlled />
 		</React.Fragment>
 	)
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // export each for testing
-export {
-	Controlled,
-	Uncontrolled,
-}
+export {Controlled, Uncontrolled, FullyUncontrolled}

@@ -1,49 +1,40 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-class UnControlled extends React.Component {
+class FullyUnControlled extends React.Component {
 	static propTypes = {
-		value: PropTypes.string,
 		handleBlur: PropTypes.func.isRequired,
 		type: PropTypes.string,
 	}
 
-	state = {
-		value: this.props.value,
-	}
-
 	static defaultProps = {
 		type: 'text',
-		value: '',
 	}
 
-	handleChange = (event) => {
-		this.setState({
-			value: event.target.value,
-		})
+	constructor(props) {
+		super(props);
+		this.input = React.createRef()
 	}
-
 	handleBlur = () => {
-		this.props.handleBlur(this.state.value)
+		this.props.handleBlur(this.input.current.value)
 	}
 
 	render() {
-		const {value, type} = this.state
+		const {type} = this.props
 
 		return (
 			<React.Fragment>
-				<label>Un-Controlled:</label>
+				<label>Fully Un-Controlled:</label>
 				<input
 					className='awesome-input'
 					type={type}
-					value={value}
-					onChange={this.handleChange}
 					onBlur={this.handleBlur}
 					placeholder='Name...'
+					ref={this.input}
 				/>
 			</React.Fragment>
 		)
 	}
 }
 
-export default UnControlled
+export default FullyUnControlled
