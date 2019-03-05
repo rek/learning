@@ -11,8 +11,12 @@ class FullyUnControlled extends React.Component {
 		type: 'text',
 	}
 
+	constructor(props) {
+		super(props);
+		this.input = React.createRef()
+	}
 	handleBlur = () => {
-		this.props.handleBlur(this.input.value)
+		this.props.handleBlur(this.input.current.value)
 	}
 
 	render() {
@@ -26,9 +30,7 @@ class FullyUnControlled extends React.Component {
 					type={type}
 					onBlur={this.handleBlur}
 					placeholder='Name...'
-					ref={(el) => {
-						this.input = el
-					}}
+					ref={this.input}
 				/>
 			</React.Fragment>
 		)
