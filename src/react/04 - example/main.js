@@ -25,14 +25,7 @@ export default observer(() => {
 
 			{store.all.map((item) => {
 				return (
-					// <CustomLi item={item} key={item.id} />
-					<li
-						key={item.id}
-						onClick={item.clicked}
-						className={item.selected ? 'on' : ''}
-					>
-						{item.displayName}
-					</li>
+					<CustomLi item={item} key={item.id} />
 				)
 			})}
 		</ul>

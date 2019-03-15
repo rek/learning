@@ -6,7 +6,7 @@ MobX
 - Pure MobX does not enforce structure
 - Implemented internally with Proxys (v5)
 
-Critisisms:
+Criticisms:
 
 - Redux is moving forward, one way data binding (flux)
 - MobX is going back allowing views to change data.
