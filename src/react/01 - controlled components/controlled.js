@@ -14,14 +14,15 @@ const Controlled = ({
 	className = 'awesome-input',
 }) => {
 	return (
-		<div className={className}>
+		<div
+			className={className}
+		>
 			<label>{label}</label>
 
 			<input
 				type={type}
 				value={value}
 				placeholder={placeholder}
-
 				onBlur={handleBlur}
 				onChange={returnValue(handleChange)}
 			/>
